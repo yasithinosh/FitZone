@@ -25,7 +25,7 @@ public class Trainer {
     private String speciality;
 
     @Builder.Default
-    @Column(precision = 2, scale = 1)
+    @Column
     private Double rating = 5.0;
 
     @Column(name = "photo_url", length = 500)

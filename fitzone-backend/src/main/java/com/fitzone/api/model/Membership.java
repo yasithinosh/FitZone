@@ -20,8 +20,8 @@ public class Membership {
     @Column(nullable = false)
     private MembershipType type;
 
-    @Column(nullable = false, precision = 8, scale = 2)
-    private BigDecimal price;
+    @Column(nullable = false)
+    private Double price;
 
     @Column(name = "duration_days", nullable = false)
     private Integer durationDays;
