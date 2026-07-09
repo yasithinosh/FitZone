@@ -1,8 +1,8 @@
 -- Passwords are 'password' hashed with BCrypt
 INSERT INTO users (name, email, password, role, is_active, created_at) VALUES 
-('Admin User', 'admin@fitzone.com', '$2a$10$wY1txMsnoDzEEhE3UvQv3e3L.08s6d65w5wD0o7Jz8V9.8pP9W72W', 'ROLE_ADMIN', true, CURRENT_TIMESTAMP),
-('Trainer John', 'john@fitzone.com', '$2a$10$wY1txMsnoDzEEhE3UvQv3e3L.08s6d65w5wD0o7Jz8V9.8pP9W72W', 'ROLE_TRAINER', true, CURRENT_TIMESTAMP),
-('Member Jane', 'jane@fitzone.com', '$2a$10$wY1txMsnoDzEEhE3UvQv3e3L.08s6d65w5wD0o7Jz8V9.8pP9W72W', 'ROLE_MEMBER', true, CURRENT_TIMESTAMP);
+('Admin User', 'admin@fitzone.com', '$2b$10$NlSXQWrA201m7CjbTvf1O.hrLL5c9YalN0HhOSlFgPzLHanHi8wvG', 'ROLE_ADMIN', true, CURRENT_TIMESTAMP),
+('Trainer John', 'john@fitzone.com', '$2b$10$NlSXQWrA201m7CjbTvf1O.hrLL5c9YalN0HhOSlFgPzLHanHi8wvG', 'ROLE_TRAINER', true, CURRENT_TIMESTAMP),
+('Member Jane', 'jane@fitzone.com', '$2b$10$NlSXQWrA201m7CjbTvf1O.hrLL5c9YalN0HhOSlFgPzLHanHi8wvG', 'ROLE_MEMBER', true, CURRENT_TIMESTAMP);
 
 INSERT INTO memberships (type, price, duration_days, features) VALUES 
 ('BASIC', 29.00, 30, '["Unlimited classes","Locker room"]'),

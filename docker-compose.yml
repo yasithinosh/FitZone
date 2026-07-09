@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: fitzone-db
+    environment:
+      MYSQL_DATABASE: fitzonedb
+      MYSQL_USER: fitzone
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: rootpassword
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./fitzone-backend
+      dockerfile: Dockerfile
+    container_name: fitzone-backend
+    ports:
+      - "8080:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./fitzone-frontend
+      dockerfile: Dockerfile
+    container_name: fitzone-frontend
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  db_data:
